@@ -12,13 +12,14 @@ import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import pet.store.controller.model.PetStoreData;
 
 @Entity
 @Data
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int customerId;
+	private Long customerId;
 	
 	private String customerFirstName;
 	private String customerLastName;

@@ -20,57 +20,26 @@ public class PetStoreData {
 	private String petStoreState;
 	private String petStoreZip;
 	private String petStorePhone;
-	private Set<PetStoreCustomer> customers;
-	private Set<PetStoreEmployee> employees;
+	private Set<PetStoreCustomer> customers = new HashSet<PetStoreCustomer>();
+	private Set<PetStoreEmployee> employees = new HashSet<PetStoreEmployee>();
 	
 
-	public PetStoreData(PetStore save) {
-		petStoreId = save.getPetStoreId();
-		petStoreName = save.getPetStoreName();
-		petStoreAddress = save.getPetStoreAddress();
-		petStoreCity = save.getPetStoreCity();
-		petStoreState = save.getPetStoreState();
-		petStoreZip = save.getPetStoreZip();
-		petStorePhone = save.getPetStorePhone();
+	public PetStoreData(PetStore petStore) {
+		petStoreId = petStore.getPetStoreId();
+		petStoreName = petStore.getPetStoreName();
+		petStoreAddress = petStore.getPetStoreAddress();
+		petStoreCity = petStore.getPetStoreCity();
+		petStoreState = petStore.getPetStoreState();
+		petStoreZip = petStore.getPetStoreZip();
+		petStorePhone = petStore.getPetStorePhone();
 	
 	
-		customers = new HashSet<>();
-		for(Customer customer : save.getCustomers()) {
+		for(Customer customer : petStore.getCustomers()) {
 			customers.add(new PetStoreCustomer(customer));
 		}
-		employees = new HashSet<>();
-		for(Employee employee : save.getEmployees()) {
+
+		for(Employee employee : petStore.getEmployees()) {
 			employees.add(new PetStoreEmployee(employee));
 	    }
-	}
-
-	public class PetStoreCustomer {
-		private int customerId;
-		private String customerFirstName;
-		private String customerLastName;
-		private String customerEmail;
-	
-		public PetStoreCustomer (Customer customer) {
-			customerId = customer.getCustomerId();
-			customerFirstName = customer.getCustomerFirstName();
-			customerLastName = customer.getCustomerLastName();
-			customerEmail = customer.getCustomerEmail();
-		}
-	}
-	
-	public class PetStoreEmployee {
-		private int employeeId;
-		private String employeeFirstName;
-		private String employeeLastName;
-		private String employeePhone;
-		private String employeeJobTitle;
-		
-		public PetStoreEmployee (Employee employee) {
-			employeeId = employee.getEmployeeId();
-			employeeFirstName = employee.getEmployeeFirstName();
-			employeeLastName = employee.getEmployeeLastName();
-			employeePhone = employee.getEmployeePhone();
-			employeeJobTitle = employee.getEmployeeJobTitle();
-		}
 	}
 }
